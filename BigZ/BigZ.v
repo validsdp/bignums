@@ -9,7 +9,7 @@
 (************************************************************************)
 
 Require Export BigN.
-Require Import ZProperties ZDivFloor ZSig ZSigZAxioms ZMake.
+Require Import ZArith ZProperties ZDivFloor ZSig ZSigZAxioms ZMake.
 
 (** * [BigZ] : arbitrary large efficient integers.
 

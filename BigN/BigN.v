@@ -10,14 +10,14 @@
 
 (** Initial Author: Arnaud Spiwack *)
 
-Require Export Int31.
-Require Import CyclicAxioms Cyclic31 Ring31 NSig NSigNAxioms NMake
+Require Export Int63.
+Require Import CyclicAxioms Cyclic63 Ring63 NSig NSigNAxioms NMake
   NProperties GenericMinMax.
 
 (** The following [BigN] module regroups both the operations and
     all the abstract properties:
 
-    - [NMake.Make Int31Cyclic] provides the operations and basic specs
+    - [NMake.Make Int63Cyclic] provides the operations and basic specs
        w.r.t. ZArith
     - [NTypeIsNAxioms] shows (mainly) that these operations implement
       the interface [NAxioms]
@@ -29,7 +29,7 @@ Require Import CyclicAxioms Cyclic31 Ring31 NSig NSigNAxioms NMake
 Delimit Scope bigN_scope with bigN.
 
 Module BigN <: NType <: OrderedTypeFull <: TotalOrder :=
-  NMake.Make Int31Cyclic
+  NMake.Make Int63Cyclic
   <+ NTypeIsNAxioms
   <+ NBasicProp [no inline] <+ NExtraProp [no inline]
   <+ HasEqBool2Dec [no inline]
@@ -44,7 +44,7 @@ Notation bigN := BigN.t.
 Bind Scope bigN_scope with bigN.
 Bind Scope bigN_scope with BigN.t.
 Bind Scope bigN_scope with BigN.t'.
-Arguments BigN.N0 _%int31.
+Arguments BigN.N0 _%int63.
 Local Notation "0" := BigN.zero : bigN_scope. (* temporary notation *)
 Local Notation "1" := BigN.one : bigN_scope. (* temporary notation *)
 Local Notation "2" := BigN.two : bigN_scope. (* temporary notation *)
@@ -127,7 +127,7 @@ Ltac isStaticWordCst t :=
    | false => constr:(false)
    | true => isStaticWordCst t2
    end
- | _ => isInt31cst t
+ | _ => isInt63cst t
  end.
 
 Ltac isBigNcst t :=
